@@ -1,22 +1,13 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import ProductList from './screens/ProductList';
-import Cart from './screens/Cart';
-import Profil from './screens/Profil';
 import React, {useEffect, useState} from 'react';
-
-import {
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from './screens/Home';
+import Meteo from './screens/Meteo';
+import Week from './screens/Week';
+import Position from './screens/Position';
+import GetLocation from 'react-native-get-location';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,32 +20,32 @@ const App = () => {
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <Tab.Navigator>
           <Tab.Screen
-            name="Home"
-            component={Home}
+            name="Position"
+            component={Position}
             options={{
-              tabBarLabel: 'Home',
+              tabBarLabel: 'Votre position',
               tabBarIcon: ({color}) => (
                 <Icon name="home" color={color} size={26} />
               ),
             }}
           />
           <Tab.Screen
-            name="Cart"
-            component={Cart}
+            name="Week"
+            component={Week}
             options={{
-              tabBarLabel: 'Cart',
+              tabBarLabel: 'À venir',
               tabBarIcon: ({color}) => (
-                <Icon name="cart" color={color} size={26} />
+                <Icon name="home" color={color} size={26} />
               ),
             }}
           />
           <Tab.Screen
-            name="Profil"
-            component={Profil}
+            name="Recherche"
+            component={Meteo}
             options={{
-              tabBarLabel: 'Profil',
+              tabBarLabel: 'Recherche',
               tabBarIcon: ({color}) => (
-                <Icon name="account" color={color} size={26} />
+                <Icon name="home" color={color} size={26} />
               ),
             }}
           />
@@ -63,12 +54,5 @@ const App = () => {
     </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  equivalentClasse: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-});
 
 export default App;
